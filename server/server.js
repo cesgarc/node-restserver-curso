@@ -3,6 +3,7 @@ require('./config/config');
 const express = require('express');
 // Using Node.js `require()`
 const mongoose = require('mongoose');
+const path = require('path');
 
 const app = express();
 
@@ -14,6 +15,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
+
+//Habilitar Carpeta Public para ser Accedida
+app.use(express.static( path.resolve(__dirname, '../public' )));
 
 //Configuracion Global de rutas
 app.use( require('./routes/index'));
